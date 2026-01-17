@@ -76,9 +76,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <nav class="SideNav"></nav>
 <div class="notFind" style="display:none;font-size:24px;margin:8px;">Not Find</div>
 </div>
-    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://YU-1021.github.io">Yuのblog</a></div>
+    <div id="footer">--- START OF FILE footer.html ---
+<div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://YU-1021.github.io">Yuのblog</a></div>
 <div id="footer2">
-    <span id="runday"></span><span> <a href="https://github.com/YU-1021/YU-1021.github.io/issues/new" target="_blank">write</a></span>
+    <span id="runday"></span>
+    <a href="https://github.com/YU-1021/YU-1021.github.io/issues/new" target="_blank" class="btn btn-invisible circle" title="Write">
+        <svg class="octicon" width="16" height="16"><path id="pathWrite" fill-rule="evenodd"></path></svg>
+    </a>
 </div>
 
 <script>
@@ -91,6 +95,9 @@ if("2026-01-16"!=""){
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
 }
+
+/* 设置写文章按钮的图标 (使用内置的 post 图标) */
+document.getElementById("pathWrite").setAttribute("d",IconList["post"]);
 </script></div>
 </body>
 <script>
