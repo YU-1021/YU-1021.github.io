@@ -78,18 +78,44 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://YU-1021.github.io">Yuのblog</a></div>
 <div id="footer2">
-    <span id="runday"></span><span><a href="https://github.com/YU-1021/YU-1021.github.io/issues/new" target="_blank" title="Write">✍️</a></span>
+    <span id="runday"></span>
+    <!-- 点击触发显示输入框 -->
+    <span style="cursor:pointer;" onclick="toggleWriteBox()" title="Write Post">✍️</span>
+</div>
+
+<!-- 隐藏的发布小窗 -->
+<div id="writeBox" style="display:none; position:fixed; bottom:70px; right:20px; width:300px; background:var(--color-canvas-default); border:1px solid var(--color-border-default); border-radius:10px; padding:15px; box-shadow:0 8px 24px rgba(0,0,0,0.2); z-index:1000;">
+    <input id="issueTitle" type="text" placeholder="文章标题" style="width:100%; margin-bottom:10px; padding:5px; border:1px solid var(--color-border-default); border-radius:5px; background:transparent; color:inherit;">
+    <textarea id="issueBody" placeholder="文章内容 (支持 Markdown)" style="width:100%; height:100px; margin-bottom:10px; padding:5px; border:1px solid var(--color-border-default); border-radius:5px; background:transparent; color:inherit;"></textarea>
+    <button onclick="submitToGithub()" style="width:100%; padding:8px; background:#2ea44f; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">去 GitHub 发布</button>
 </div>
 
 <script>
+// 设置年份
 var now=new Date();
 document.getElementById("copyrightYear").innerHTML=now.getFullYear();
 
+// 设置运行天数
 if("2026-01-16"!=""){
     var startSite=new Date("2026-01-16");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+
+// 显示/隐藏输入框
+function toggleWriteBox() {
+    var box = document.getElementById("writeBox");
+    box.style.display = (box.style.display === "none") ? "block" : "none";
+}
+
+// 跳转到 GitHub 并带上参数
+function submitToGithub() {
+    var title = encodeURIComponent(document.getElementById("issueTitle").value);
+    var body = encodeURIComponent(document.getElementById("issueBody").value);
+    if(!title) { alert("请输入标题"); return; }
+    var url = "https://github.com/YU-1021/YU-1021.github.io/issues/new?title=" + title + "&body=" + body;
+    window.open(url, "_blank");
 }
 </script></div>
 </body>
