@@ -91,7 +91,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://YU-1021.github.io">Yuのblog</a></div>
 <div id="footer2">
     <span id="runday"></span>
-    <!-- 点击触发显示输入框 -->
+    <span id="busuanzi_container_site_pv" style="display:none;">总访问量 <span id="busuanzi_value_site_pv"></span> 次 • </span>
+    <span id="busuanzi_container_site_uv" style="display:none;">总访客数 <span id="busuanzi_value_site_uv"></span> 人 • </span>
     <span style="cursor:pointer;" onclick="toggleWriteBox()" title="Write Post">✍️</span>
 </div>
 
@@ -102,12 +103,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <button onclick="submitToGithub()" style="width:100%; padding:8px; background:#2ea44f; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">去 GitHub 发布</button>
 </div>
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <script>
-// 设置年份
 var now=new Date();
 document.getElementById("copyrightYear").innerHTML=now.getFullYear();
 
-// 设置运行天数
 if("2026-01-16"!=""){
     var startSite=new Date("2026-01-16");
     var diff=now.getTime()-startSite.getTime();
@@ -115,13 +116,11 @@ if("2026-01-16"!=""){
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
 }
 
-// 显示/隐藏输入框
 function toggleWriteBox() {
     var box = document.getElementById("writeBox");
     box.style.display = (box.style.display === "none") ? "block" : "none";
 }
 
-// 跳转到 GitHub 并带上参数
 function submitToGithub() {
     var title = encodeURIComponent(document.getElementById("issueTitle").value);
     var body = encodeURIComponent(document.getElementById("issueBody").value);
