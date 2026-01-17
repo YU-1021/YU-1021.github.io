@@ -49,7 +49,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }
 
 </style>
-
+.avatar {transition: 0.8s;} .avatar:hover{transform: scale(1.15) rotate(360deg);} #footer2 a.write-btn{margin-left:10px; color:var(--color-fg-muted); vertical-align:middle;} #footer2 a.write-btn:hover{color:var(--color-accent-fg);}
 
 
 
@@ -97,8 +97,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 var now=new Date();
 document.getElementById("copyrightYear").innerHTML=now.getFullYear();
 
-if(""!=""){
-    var startSite=new Date("");
+if("2026-01-17"!=""){
+    var startSite=new Date("2026-01-17");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
@@ -182,6 +182,6 @@ function iFrameLoading(){
 
 
 </script>
-
+<script>document.addEventListener('DOMContentLoaded',function(){let f2=document.getElementById('footer2');if(f2){let a=document.createElement('a');a.href='https://github.com/YU-1021/YU-1021.github.io/issues/new';a.className='write-btn';a.target='_blank';a.title='快速写文章';a.innerHTML='<svg class="octicon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.013 1.427a.75.75 0 0 1 1.06 0l2.5 2.5a.75.75 0 0 1 0 1.06l-9.25 9.25a.75.75 0 0 1-.324.197l-3.5 1a.75.75 0 0 1-.94-.94l1-3.5a.75.75 0 0 1 .197-.324l9.25-9.25Zm.53 1.59L3.06 11.497l-.654 2.29 2.29-.654 8.484-8.484-1.636-1.636ZM12.94 4.106l1.636 1.636-1.03 1.03-1.636-1.636 1.03-1.03Z"></path></svg>';f2.appendChild(a);}});</script>
 
 </html>
